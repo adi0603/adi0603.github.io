@@ -1,0 +1,15 @@
+.code input[type="submit"]{
+  background: #3498DB;
+  border-radius: 20px;
+  padding: 8px 30px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 0.1px;
+  transition: all 0.25s linear;
+}
+
+.code input[type="submit"]:hover{
+  color: #3498DB;
+  background: #fff !important;
+}
