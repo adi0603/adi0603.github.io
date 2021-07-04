@@ -320,7 +320,230 @@
                         </div>
                 
                         <div class="form-group">
-                          <textarea rows="4" id="contact_message" name="message" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Message..." required=""></textarea>
+                          <textarea rows="4" id="contact_message" name="message" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Message..." required=""><!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="description" content="">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link rel="icon" type="image/ico" href="image/icon.png">
+		<title>Munichre | Region</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<script src="https://kit.fontawesome.com/ab99e84824.js" crossorigin="anonymous"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		  <div class="container-fluid">
+		    <a class="navbar-brand" href="#">
+		    	<img src="image/icon.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+		    	Munichre
+			</a>
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <div class="collapse navbar-collapse" id="navbarNav">
+		      <ul class="navbar-nav">
+		        <li class="nav-item">
+		          <a class="nav-link active" aria-current="page" href="#">Home</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="#">EMEA</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="#">APAC</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link " href="#" aria-disabled="true">AMERICA</a>
+		        </li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+
+		<div class="wrap">
+		   	<div class="search">
+		   		<div class="autocomplete" style="width: 100%;">
+		   			<div class="input-group mb-3">
+					  <input type="text" id="myInput" name="myCountry" class="form-control" placeholder="What are you looking for?" aria-label="Recipient's username" aria-describedby="button-addon2">
+					  <button class="btn btn-outline-info" type="button" id="button-addon2" onclick="search();" style="color: white;background-color: #4da6ff;"><i class="fas fa-search"></i>&nbsp;Search</button>
+					</div>
+		   		</div>
+			</div>
+			<br>
+			<div id="open1" style="display: none;">
+				<center><h4 style="color: black;">Results</h4><br>
+					<h5> <span id="input_data1"></span> &nbsp;&nbsp;
+						<a href="" id="open" target="_blank"  style="text-decoration: none;background-color: #4da6ff;color: white;padding: .125em .25em; border-radius: 10px; ">Open
+						</a>
+					</h5>
+				</center>
+			</div>
+			<div id="copy1" style="display: none;">
+				<center><h4 style="color: black;">Results</h4><br>
+					<h5> <span id="input_data2"></span> &nbsp;&nbsp;
+						<span id="input_value"></span>&nbsp;&nbsp;
+						<a style="text-decoration: none;background-color: #4da6ff;color: white;padding: .125em .25em; border-radius: 10px;" onclick="CopyToClipboard('input_value');">Copy
+						</a>
+					</h5>
+				</center>
+			</div>
+			<div id="error" style="display: none;">
+				<center><h4 style="color: black;">Results</h4><br>
+					<h5> 
+						<span id="input_data2" style="color: red;">No result found</span> &nbsp;&nbsp;
+					</h5>
+				</center>
+			</div>
+		</div>
+		<script>
+		function autocomplete(inp, arr) {
+		  /*the autocomplete function takes two arguments,
+		  the text field element and an array of possible autocompleted values:*/
+		  var currentFocus;
+		  /*execute a function when someone writes in the text field:*/
+		  inp.addEventListener("input", function(e) {
+		      var a, b, i, val = this.value;
+		      /*close any already open lists of autocompleted values*/
+		      closeAllLists();
+		      if (!val) { return false;}
+		      currentFocus = -1;
+		      /*create a DIV element that will contain the items (values):*/
+		      a = document.createElement("DIV");
+		      a.setAttribute("id", this.id + "autocomplete-list");
+		      a.setAttribute("class", "autocomplete-items");
+		      /*append the DIV element as a child of the autocomplete container:*/
+		      this.parentNode.appendChild(a);
+		      /*for each item in the array...*/
+		      for (i = 0; i < arr.length; i++) {
+		        /*check if the item starts with the same letters as the text field value:*/
+		        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+		          /*create a DIV element for each matching element:*/
+		          b = document.createElement("DIV");
+		          /*make the matching letters bold:*/
+		          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+		          b.innerHTML += arr[i].substr(val.length);
+		          /*insert a input field that will hold the current array item's value:*/
+		          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+		          /*execute a function when someone clicks on the item value (DIV element):*/
+		          b.addEventListener("click", function(e) {
+		              /*insert the value for the autocomplete text field:*/
+		              inp.value = this.getElementsByTagName("input")[0].value;
+		              /*close the list of autocompleted values,
+		              (or any other open lists of autocompleted values:*/
+		              closeAllLists();
+		          });
+		          a.appendChild(b);
+		        }
+		      }
+		  });
+		  /*execute a function presses a key on the keyboard:*/
+		  inp.addEventListener("keydown", function(e) {
+		      var x = document.getElementById(this.id + "autocomplete-list");
+		      if (x) x = x.getElementsByTagName("div");
+		      if (e.keyCode == 40) {
+		        /*If the arrow DOWN key is pressed,
+		        increase the currentFocus variable:*/
+		        currentFocus++;
+		        /*and and make the current item more visible:*/
+		        addActive(x);
+		      } else if (e.keyCode == 38) { //up
+		        /*If the arrow UP key is pressed,
+		        decrease the currentFocus variable:*/
+		        currentFocus--;
+		        /*and and make the current item more visible:*/
+		        addActive(x);
+		      } else if (e.keyCode == 13) {
+		        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+		        e.preventDefault();
+		        if (currentFocus > -1) {
+		          /*and simulate a click on the "active" item:*/
+		          if (x) x[currentFocus].click();
+		        }
+		      }
+		  });
+		  function addActive(x) {
+		    /*a function to classify an item as "active":*/
+		    if (!x) return false;
+		    /*start by removing the "active" class on all items:*/
+		    removeActive(x);
+		    if (currentFocus >= x.length) currentFocus = 0;
+		    if (currentFocus < 0) currentFocus = (x.length - 1);
+		    /*add class "autocomplete-active":*/
+		    x[currentFocus].classList.add("autocomplete-active");
+		  }
+		  function removeActive(x) {
+		    /*a function to remove the "active" class from all autocomplete items:*/
+		    for (var i = 0; i < x.length; i++) {
+		      x[i].classList.remove("autocomplete-active");
+		    }
+		  }
+		  function closeAllLists(elmnt) {
+		    /*close all autocomplete lists in the document,
+		    except the one passed as an argument:*/
+		    var x = document.getElementsByClassName("autocomplete-items");
+		    for (var i = 0; i < x.length; i++) {
+		      if (elmnt != x[i] && elmnt != inp) {
+		        x[i].parentNode.removeChild(x[i]);
+		      }
+		    }
+		  }
+		  /*execute a function when someone clicks in the document:*/
+		  document.addEventListener("click", function (e) {
+		      closeAllLists(e.target);
+		  });
+		}
+
+		/*An array containing all the country names in the world:*/
+		var values = ["Google","Youtube","Gaana","Spotify","Github"];
+		var value_output = ["https://www.google.com/","https://www.youtube.com/","https://gaana.com/","https://open.spotify.com/","https://github.com/"]
+
+		/*initiate the autocomplete function on the "myInput" element, and pass along the values array as possible autocomplete values:*/
+		autocomplete(document.getElementById("myInput"), values);
+
+		function search(){
+			var input = document.getElementById("myInput").value;
+			var index=values.indexOf(input);
+			if(index!=-1){
+				if(index<=1){
+					copy1.style.display="none";
+					error.style.display="none";
+					open1.style.display="block";
+					document.getElementById("input_data1").innerHTML=values[index];
+					document.getElementById("open").href  =value_output[index];
+				}
+				else if(index>1){
+					open1.style.display="none";
+					error.style.display="none";
+					copy1.style.display="block";
+					document.getElementById("input_data2").innerHTML=values[index];
+					document.getElementById("input_value").innerHTML  =value_output[index];
+				}
+			}
+			else{
+				copy1.style.display="none";
+				open1.style.display="none";
+				error.style.display="block";
+			}
+			
+		}
+		function CopyToClipboard(id)
+		{
+			var r = document.createRange();
+			r.selectNode(document.getElementById(id));
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(r);
+			document.execCommand('copy');
+			window.getSelection().removeAllRanges();
+			alert("Text Copied!");
+		}
+		</script>
+	</body>
+
+</html></textarea>
                         </div>
                 
                         <div class="form-group mb-0">
